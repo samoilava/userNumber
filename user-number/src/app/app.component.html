@@ -1,0 +1,11 @@
+<div class="container-fluid"> 
+  <form #userForm="ngForm">
+    <div class="form-group">
+      <label>Phone </label>
+      <input type="tel" #phone="ngModel" pattern="^\d{10}$" [class.is-invalid]="phone.invalid && phone.touched"
+        class="form-control" name="phone" [(ngModel)]="userModel.phone">
+    </div>
+  </form>
+</div>
+
+<router-outlet></router-outlet>
