@@ -1,11 +1,21 @@
-<div class="container-fluid"> 
+<div class="container-fluid">
   <form #userForm="ngForm">
     <div class="form-group">
       <label>Phone </label>
-      <input type="tel" #phone="ngModel" pattern="^\d{10}$" [class.is-invalid]="phone.invalid && phone.touched"
+      <input type="tel" #phone="ngModel" pattern="^\d{9}$" [class.is-invalid]="phone.invalid && phone.touched"
         class="form-control" name="phone" [(ngModel)]="userModel.phone">
     </div>
+    <button class="btn btn-primary" type="submit" (click)='onClick()'>Submit form</button>
   </form>
+  <p>({{userModel.phone.toString() | slice:0:2}})
+    {{userModel.phone.toString() | slice:2:5}}-{{userModel.phone.toString() | slice:5:7}}-{{userModel.phone.toString() | slice:7:9}}
+  </p>
+
+  <!-- Custom Pipe -->
+  <p>
+    {{userModel.phone | slicePhone}} 
+  </p>
+
 </div>
 
 <router-outlet></router-outlet>
